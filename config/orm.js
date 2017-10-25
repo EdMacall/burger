@@ -49,10 +49,15 @@ var orm = {
     });
   },
 
-  selectAll: function(tableInput) {
+  all: function(tableInput, cb) {
+  	console.log("The orm.all method got called.");
   	var queryString = "SELECT * FROM ??";
   	connection.query(queryString, [tableInput], function(err, result) {
-      return result;
+  	  console.log("I'm inside the connection.query.")
+      if (err) {
+        throw err;
+      }
+      cb(result);
     });
   },
 
