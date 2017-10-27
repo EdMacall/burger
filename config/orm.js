@@ -85,6 +85,7 @@ var orm = {
   },
 
   updateOne: function(table, objColVals, condition, cb) {
+    console.log("The table that I tried to call was " + table + ".");
     var queryString = "UPDATE "  + table;
         queryString += " SET "   + objToSql(objColVals);
         queryString += " WHERE " + condition;
