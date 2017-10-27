@@ -1,5 +1,5 @@
 var express = require("express");
-
+var dateFormat = require('dateformat');
 
 var router = express.Router();
 
@@ -22,7 +22,7 @@ router.post("/api/burgers", function(req, res) {
   burger.create([
     "burger_name", "devoured", "date"
   ], [
-    req.body.burger_name, req.body.devoured, Date.now()
+    req.body.burger_name, req.body.devoured, dateFormat(new Date(), "yyyy-mm-dd h:MM:ss")
   ], function(result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
